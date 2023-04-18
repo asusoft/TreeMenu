@@ -10,7 +10,7 @@ def home(request):
     menu_items = MenuItem.objects.all()
 
     # Call the draw_menu template tag to render the menu HTML
-    menu_html = draw_menu()
+    menu_html = draw_menu(menu_items, request)
 
     # Render the HTML page with the menu
     return render(request, 'home.html', {'menu_html': menu_html})
