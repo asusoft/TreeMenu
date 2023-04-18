@@ -1,0 +1,41 @@
+{% load static %}
+
+{% if menu_items %}
+    <ul>
+        {% for item in menu_items %}
+            <li>
+                {% if item.url %}
+                    <a href="{{ item.url }}">{{ item.title }}</a>
+                {% else %}
+                    {{ item.title }}
+                {% endif %}
+                {% if item.children %}
+                    <ul>
+                        {% for child in item.children %}
+                            <li>
+                                {% if child.url %}
+                                    <a href="{{ child.url }}">{{ child.title }}</a>
+                                {% else %}
+                                    {{ child.title }}
+                                {% endif %}
+                                {% if child.children %}
+                                    <ul>
+                                        {% for subchild in child.children %}
+                                            <li>
+                                                {% if subchild.url %}
+                                                    <a href="{{ subchild.url }}">{{ subchild.title }}</a>
+                                                {% else %}
+                                                    {{ subchild.title }}
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
