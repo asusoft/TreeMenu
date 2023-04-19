@@ -7,9 +7,7 @@ from .templatetags.menu_tags import draw_menu
 
 def home(request):
    # Get the menu items from the database
-    menu_items = MenuItem.objects.all()
 
     # Call the draw_menu template tag to render the menu HTML
-
     # Render the HTML page with the menu
     return render(request, 'home.html', {'draw_menu': draw_menu})

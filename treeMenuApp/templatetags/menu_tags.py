@@ -16,10 +16,33 @@ def get_menu_items(menu_name):
 @register.simple_tag
 def draw_menu(menu_name):
     menu_items = get_menu_items(menu_name)
+
+    result = '<ul>'
+    for item in menu_items:
+        if item.parent is None:
+            result += f'<li><a href="{item.url}">{item.name}</a>'
+            result += draw_children(item)
+            result += '</li>'
+    result += '</ul>'
+    template = loader.get_template('menu.html')
+    context = {'menu_items': result}
+    return template.render(context)
     # Find the active item and set its is_active attribute to True
 
     # Render the menu HTML
-    template = loader.get_template('menu.html')
-    context = {'menu_items': menu_items}
-    return template.render(context)
+    #template = loader.get_template('menu.html')
+   # context = {'menu_items': menu_items}
+    #return template.render(context)
 
+def draw_children(item):
+    children = item.children.all()
+    if children:
+        result = '<ul>'
+        for child in children:
+            result += f'<li><a href="{child.url}">{child.name}</a>'
+            result += draw_children(child)
+            result += '</li>'
+        result += '</ul>'
+        return result
+    else:
+        return ''
