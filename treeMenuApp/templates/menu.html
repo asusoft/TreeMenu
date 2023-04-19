@@ -1,31 +1,59 @@
-{% load static %} {% if menu_items %}
-<ul class="nav navbar-nav navbar-navi">
+{% load static %}
+
+<ul>
     {% for item in menu_items %}
-    <li {% if item.is_active %} class="active" {% endif %}>
-        {% if item.url %}
-        <a href="{{ item.url }}">{{ item.name }}</a>
-        {% else %} {{ item.title }} {% endif %} {% if item.children %}
-        <ul>
-        {% for child in item.children %}
-        <li>
-            {% if child.url %}
-            <a href="{{ child.url }}">{{ child.title }}</a>
-            {% else %} {{ child.title }} {% endif %} {% if child.children %}
-            <ul>
-                {% for subchild in child.children %}
-                <li>
-                    {% if subchild.url %}
-                    <a href="{{ subchild.url }}">{{ subchild.title }}</a>
-                    {% else %} {{ subchild.title }} {% endif %}
-                </li>
+        {% if item.is_active %}
+            <li class="active">
+        {% else %}
+            <li>
+        {% endif %}
+            <a href="{{ item.url }}">{{ item.title }}</a>
+            {% if item.children %}
+                <ul {% if item.is_active %}class="expanded"{% endif %}>
+                {% for child in item.children %}
+                    <li>
+                        <a href="{{ child.url }}">{{ child.title }}</a>
+                        {% if child.children %}
+                            <ul {% if child.is_active %}class="expanded"{% endif %}>
+                            {% for grandchild in child.children %}
+                                <li>
+                                    <a href="{{ grandchild.url }}">{{ grandchild.title }}</a>
+                                    {% if grandchild.children %}
+                                        <ul {% if grandchild.is_active %}class="expanded"{% endif %}>
+                                        {% for greatgrandchild in grandchild.children %}
+                                            <li>
+                                                <a href="{{ greatgrandchild.url }}">{{ greatgrandchild.title }}</a>
+                                                {% if greatgrandchild.children %}
+                                                    <ul {% if greatgrandchild.is_active %}class="expanded"{% endif %}>
+                                                    {% for ggchild in greatgrandchild.children %}
+                                                        <li>
+                                                            <a href="{{ ggchild.url }}">{{ ggchild.title }}</a>
+                                                            {% if ggchild.children %}
+                                                                <ul {% if ggchild.is_active %}class="expanded"{% endif %}>
+                                                                {% for gggchild in ggchild.children %}
+                                                                    <li>
+                                                                        <a href="{{ gggchild.url }}">{{ gggchild.title }}</a>
+                                                                    </li>
+                                                                {% endfor %}
+                                                                </ul>
+                                                            {% endif %}
+                                                        </li>
+                                                    {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </li>
+                                        {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
                 {% endfor %}
-            </ul>
+                </ul>
             {% endif %}
         </li>
-        {% endfor %}
-        </ul>
-        {% endif %}
-    </li>
     {% endfor %}
-</ul>
-{% endif %}
+    </ul>
+    
