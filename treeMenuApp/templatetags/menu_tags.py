@@ -27,12 +27,6 @@ def draw_menu(menu_name):
     template = loader.get_template('menu.html')
     context = {'menu_items': result}
     return template.render(context)
-    # Find the active item and set its is_active attribute to True
-
-    # Render the menu HTML
-    #template = loader.get_template('menu.html')
-   # context = {'menu_items': menu_items}
-    #return template.render(context)
 
 def draw_children(item):
     children = item.children.all()
