@@ -11,5 +11,7 @@ class MenuItemAdmin(admin.ModelAdmin):
     list_filter = ('parent',)
     search_fields = ('name', 'url')
 
+    exclude = ('is_active', )
+
 admin.site.register(Menu, MenuAdmin)
 admin.site.register(MenuItem, MenuItemAdmin)
