@@ -11,7 +11,7 @@
             {%if item.parent == None %}
                 {% if item.children.all %}
                 <div class="dropdown">
-                    <li class="nav-item dropdown {% if item.is_active %} active {% endif %}">
+                    <li class="nav-item dropdown {% if item.is_active %} active show {% endif %}">
                         <a class="nav-link dropdown-toggle {% if item.is_active %} active {% endif %}" href="{{ item.url }}" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ item.name }}
                         </a>
@@ -28,6 +28,7 @@
                 </li>
             {% endif %}
             {% endif %}
+            
         {% endfor %}
         </ul>
     </div>

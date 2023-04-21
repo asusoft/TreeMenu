@@ -34,6 +34,7 @@ class MenuItem(models.Model):
                                 related_name='children')
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name='items', blank=True, null=True,)
     is_active = models.BooleanField(default=False)
+    is_expanded = models.BooleanField(default=False)
     
     def get_absolute_url(self):
         if self.url:
@@ -47,5 +48,9 @@ class MenuItem(models.Model):
         self.is_active = active
         self.save()
 
+    def set_is_expanded(self, expand):
+        self.is_expanded = expand
+        self.save()
+
     def __str__(self):
-        return f"MenuItem(name='{self.name}', url='{self.url}', children={self.children}, isActive={self.is_active})"
+        return f"MenuItem(name='{self.name}', url='{self.url}', children={self.children}, isActive={self.is_active}, isExpanded={self.is_expanded})"

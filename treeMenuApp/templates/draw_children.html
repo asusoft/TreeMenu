@@ -3,7 +3,7 @@
 
 <li class="dropdown-submenu">
     <a class="nav-link {% if item.is_active %} active {% endif %}" href="{{ item.url }}">{{item.name}}</a> <span class="sr-only">(current)</span>
-    <ul class="dropdown-menu multi-level {% if item.children.all and item.is_active%} show {% endif %} " aria-labelledby="dLabel">
+    <ul class="dropdown-menu multi-level {% if item.is_expanded  %} show {% endif %}" aria-labelledby="dLabel">
         {% for child in item.children.all%}
         {% include "draw_children.html" with item=child is_active=child.is_active%}
       {%endfor%}
@@ -12,6 +12,6 @@
 
 {% else %}
 <li class="dropdown-submenu {% if item.is_active %} active {% endif %}">
-    <a class="nav-link" href="{{ item.url }}">{{item.name}} {{item.is_active}}</a> <span class="sr-only">(current)</span>
+    <a class="nav-link" href="{{ item.url }}">{{item.name}}</a> <span class="sr-only">(current)</span>
 </li>
 {% endif %}
