@@ -53,4 +53,4 @@ class MenuItem(models.Model):
         self.save()
 
     def __str__(self):
-        return f"MenuItem(name='{self.name}', url='{self.url}', children={self.children}, isActive={self.is_active}, isExpanded={self.is_expanded})"
+        return self.name
