@@ -7,7 +7,7 @@ TreeMenu is a hierarchical menu display web application, built using Python.
 To get started with TreeMenu, follow these steps:  
 
   1. Clone the repository:  
-      `git clone https://github.com/username/treemenu.git`  
+      `git clone https://github.com/asusoft/TreeMenu.git`  
         
   2. Install the dependencies:  
       `cd TreeMenu`  
