@@ -1,0 +1,21 @@
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    left: 100%;
+    top: -6px;
+}
+
+.dropdown-submenu:hover>.dropdown-menu,
+.dropdown-submenu>a:focus+.dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu.active {
+    background-color: #007bff;
+}
+
+.nav-link.active {
+    background-color: #007bff;
+}
