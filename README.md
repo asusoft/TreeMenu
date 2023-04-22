@@ -14,7 +14,6 @@ To get started with TreeMenu, follow these steps:
       `pip install -r requirements.txt`  
   
   3. Make migrations:  
-      `python manage.py makemigrations treeMenuApp`
       `python manage.py migrate`  
 
 ## Usage  
@@ -34,3 +33,5 @@ To use TreeMenu, follow these steps:
       Add `{% load draw_menu %}` at the top of your template.  
       Add `{% draw_menu 'main_menu' %}` where you want to display the menu in your template.  
       Replace `main_menu` with your menu's name (not title).  
+
+There is example of drawing a menu named 'main_menu' on the home.html file
